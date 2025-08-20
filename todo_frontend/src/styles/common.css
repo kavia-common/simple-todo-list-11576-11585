@@ -1,0 +1,311 @@
+:root {
+  /* Colors from design system */
+  --color-ffffff: #ffffff;
+  --color-d6d7ef: #d6d7ef;
+  --color-9395d3: #9395d3;
+  --color-8b8787: #8b8787;
+  --color-000000: #000000;
+  --color-d1d1d6: #d1d1d6;
+  --color-ebebf5: #ebebf5;
+  --color-34c759: #34c759;
+  --color-ffd60a: #ffd60a;
+  --color-b3b7ee: #b3b7ee;
+
+  /* Typography tokens (Jost) */
+  --font-family-base: "Jost", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
+
+  --typo-0-size: 10px;  --typo-0-weight: 400;  --typo-0-line: 14.45px;
+  --typo-1-size: 24px;  --typo-1-weight: 600;  --typo-1-line: 34.68px;
+  --typo-2-size: 13px;  --typo-2-weight: 600;  --typo-2-line: 18.785px;
+  --typo-3-size: 16px;  --typo-3-weight: 400;  --typo-3-line: 23.12px;
+  --typo-4-size: 20px;  --typo-4-weight: 600;  --typo-4-line: 28.9px;
+  --typo-5-size: 15px;  --typo-5-weight: 400;  --typo-5-line: 21.675px;
+
+  /* Typography mapped colors per design system references */
+  --typo-6-color: var(--color-9395d3);
+  --typo-7-color: var(--color-8b8787);
+  --typo-8-color: var(--color-ffffff);
+  --typo-9-color: var(--color-9395d3);
+  --typo-10-color: var(--color-000000);
+  --typo-11-color: var(--color-8b8787);
+  --typo-12-color: var(--color-ffffff);
+  --typo-13-color: var(--color-ffffff);
+
+  /* Radii */
+  --radius-1: 1px;
+  --radius-15: 15px;
+  --radius-20: 20px;
+
+  /* Shadows from design system shadow_0: 0 4 4 #000000, use alpha for web */
+  --shadow-0: 0 4px 4px rgba(0,0,0,0.1);
+
+  /* Semantic helpers */
+  --appbar-bg: var(--color-9395d3);
+  --surface: var(--color-ffffff);
+  --text-primary: var(--color-000000);
+  --text-muted: var(--color-8b8787);
+  --accent: var(--color-9395d3);
+  --accent-weak: var(--color-b3b7ee);
+
+  /* Spacing scale (select key values from design system for convenience) */
+  --s-4: 4px;
+  --s-6: 6px;
+  --s-8: 8px;
+  --s-10: 10px;
+  --s-12: 12px;
+  --s-14: 14px;
+  --s-16: 16px;
+  --s-17-5: 17.5px;
+  --s-20: 20px;
+  --s-25: 25px;
+  --s-28: 28px;
+  --s-30: 30px;
+  --s-32: 32px;
+  --s-38: 38px;
+  --s-44: 44px;
+  --s-60: 60px;
+  --s-68: 68px;
+  --s-70: 70px;
+  --s-82: 82px;
+  --s-118: 118px;
+}
+
+/* Reset & base */
+* { box-sizing: border-box; }
+html, body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: var(--font-family-base);
+  background: var(--color-ffffff);
+  color: var(--text-primary);
+}
+
+/* App canvas sized to Figma frame 414x896 and centered */
+.app-canvas {
+  max-width: 414px;
+  min-height: 896px;
+  margin: 0 auto;
+  position: relative;
+  background: var(--color-ffffff);
+  overflow: hidden;
+}
+
+/* Simulated status bar (Height 44) */
+.status-bar {
+  height: 44px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* AppBar (Height 118, background style_2 color_9395d3) */
+.app-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--s-118);
+  background: var(--appbar-bg);
+  padding: 0 var(--s-16);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+/* Title "TODO APP" (typo_8) */
+.app-title {
+  margin: 0 0 var(--s-16) 0;
+  font-size: var(--typo-1-size);
+  font-weight: var(--typo-1-weight);
+  line-height: var(--typo-1-line);
+  color: var(--typo-8-color);
+}
+
+/* Calendar icon placeholder area 60x60 as in Figma */
+.app-calendar {
+  width: var(--s-60);
+  height: var(--s-60);
+  margin-bottom: var(--s-16);
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-15);
+  background: rgba(255,255,255,0.12);
+}
+
+/* Todo list container: starts below AppBar and above bottom nav */
+.todos {
+  position: absolute;
+  top: calc(var(--s-118) + var(--s-16) + 38px); /* allow search input spacing */
+  left: 7px; /* Figma shows 400 width within 414 => 7px margin */
+  width: 400px; /* Match Figma group width */
+  padding-bottom: 140px; /* space for bottom bar + FAB */
+}
+
+/* Todo card (style_22: white, radius 15, shadow_0) - size 400x82 */
+.todo-card {
+  width: 100%;
+  height: var(--s-82);
+  background: var(--surface);
+  border-radius: var(--radius-15);
+  box-shadow: var(--shadow-0);
+  display: flex;
+  align-items: center;
+  padding: 0 var(--s-16);
+  margin-bottom: var(--s-16);
+}
+
+/* Titles group sized 124x38 with two lines */
+.todo-texts {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* Title (typo_9 color_9395d3, size 13, weight 600) */
+.todo-title {
+  font-size: var(--typo-2-size);
+  line-height: var(--typo-2-line);
+  font-weight: var(--typo-2-weight);
+  color: var(--typo-9-color);
+  text-transform: uppercase;
+}
+
+/* Subtitle (typo_10 color black, size 10) */
+.todo-subtitle {
+  font-size: var(--typo-0-size);
+  line-height: var(--typo-0-line);
+  font-weight: var(--typo-0-weight);
+  color: var(--typo-10-color);
+  text-transform: uppercase;
+}
+
+/* Right-side actions: pencil, trash, check */
+.todo-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--s-16);
+}
+
+/* Icon buttons sized 25x25 per Figma */
+.icon-btn {
+  width: var(--s-25);
+  height: var(--s-25);
+  padding: 0;
+  border: none;
+  background: transparent;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.icon-btn svg {
+  width: 100%;
+  height: 100%;
+  stroke: var(--accent-weak);
+  fill: none;
+  stroke-width: 1.5;
+}
+
+/* Completed state styling mirrors check and muted text */
+.todo-card.completed .todo-title {
+  color: var(--typo-7-color);
+}
+.todo-card.completed .todo-subtitle {
+  color: var(--typo-11-color);
+}
+.todo-card.completed .icon-btn.check svg {
+  stroke: var(--color-34c759);
+}
+
+/* Bottom navigation bar (height 68, white background) */
+.bottom-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--s-68);
+  background: var(--surface);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.06);
+}
+
+.bottom-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: var(--typo-7-color);
+  cursor: pointer;
+  user-select: none;
+}
+
+.bottom-tab svg {
+  width: var(--s-30);
+  height: var(--s-30);
+  stroke: var(--typo-7-color);
+  fill: none;
+  stroke-width: 1.5;
+}
+
+.bottom-tab.active {
+  color: var(--typo-6-color);
+}
+.bottom-tab.active svg {
+  stroke: var(--typo-6-color);
+}
+
+/* Labels under icons "All" (typo_6) and "Completed" (typo_7) */
+.bottom-tab .label {
+  font-size: var(--typo-0-size);
+  line-height: var(--typo-0-line);
+  font-weight: var(--typo-0-weight);
+}
+
+/* Floating Action Button: 70x70 circle at bottom-right with plus */
+.fab {
+  position: absolute;
+  right: 22px; /* based on x -429 within 414: 414-70-? -> visually align above bar */
+  bottom: 100px;
+  width: var(--s-70);
+  height: var(--s-70);
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: var(--shadow-0);
+  border: none;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+.fab svg {
+  width: 21px;
+  height: 24px;
+  stroke: var(--color-ffffff);
+  stroke-width: 2;
+  fill: none;
+}
+
+/* Accessibility focus */
+.icon-btn:focus-visible,
+.fab:focus-visible,
+.bottom-tab:focus-visible {
+  outline: 2px solid var(--accent-weak);
+  outline-offset: 2px;
+}
+
+/* Responsive: center canvas with some breathing room */
+@media (min-width: 415px) {
+  body {
+    background: #f5f6fb;
+  }
+  .app-canvas {
+    margin: 20px auto;
+    border-radius: var(--radius-20);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
+}

@@ -1,0 +1,34 @@
+ /* Screen-specific micro-adjustments for TODO PAGE (9:680) */
+
+ /* Positioning alignment based on Figma 414x896 */
+ .todos {
+   /* In Figma, first card starts at y ~ -812 relative to frame; here we use a clean spacing */
+   gap: 14px;
+ }
+
+ /* Slightly adjust app title baseline to better match Figma visual */
+ .app-title {
+   margin-left: 2px;
+ }
+
+ /* Ensure icons inherit accent weak stroke color */
+ .icon-btn.edit svg,
+ .icon-btn.delete svg {
+   stroke: var(--accent-weak);
+ }
+
+ /* Check circle default matches outlines seen in Figma */
+ .icon-btn.check svg circle {
+   stroke: var(--accent-weak);
+ }
+
+ /* Bottom bar labels: "All" uses typo_6 color; "Completed" uses typo_7 until active */
+ .bottom-tab .label {
+   color: var(--typo-7-color);
+ }
+ .bottom-tab.active .label {
+   color: var(--typo-6-color);
+ }
+
+ /* Focus ring visibility on bottom tabs with no default outline shift */
+ .bottom-tab:focus { outline: none; }
